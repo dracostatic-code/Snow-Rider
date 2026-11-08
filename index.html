@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#102c42"><meta name="description" content="Diamond Rush: a snowy endless downhill adventure.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<title>Diamond Rush: Snowbound</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+ <header><div class="brand"><span>❄</span><div><b>DIAMOND RUSH</b><small>SNOWBOUND</small></div></div><div class="wallet">💎 <strong id="wallet">0</strong></div></header>
+ <section id="home" class="screen active">
+  <div class="hero"><div class="mountain m1"></div><div class="mountain m2"></div><div class="sun"></div><div class="hero-copy"><span class="eyebrow">THE MOUNTAIN IS YOURS</span><h1>CHASE THE<br><em>DIAMONDS.</em></h1><p>Ride further. Collect more. Upgrade everything.</p></div><div class="rider">🏂</div></div>
+  <div class="home-stats"><div><small>BEST DISTANCE</small><b id="best">0 m</b></div><div><small>RUNS</small><b id="runs">0</b></div><div><small>UPGRADE LEVEL</small><b id="level">1</b></div></div>
+  <button class="primary" id="play">▶ START RIDING</button>
+  <div class="home-actions"><button id="shop-open">💎 UPGRADE SHOP</button><button id="how-open">HOW TO PLAY</button></div>
+  <p class="fine">Your diamonds and upgrades save automatically on this device.</p>
+ </section>
+ <section id="game" class="screen">
+  <div class="game-hud"><div>💎 <b id="run-gems">0</b></div><div><small>DISTANCE</small><b id="distance">0 m</b></div><button id="pause">Ⅱ</button></div>
+  <canvas id="scene" aria-label="3D-style snowy downhill sled game"></canvas>
+  <div class="toast" id="toast"></div>
+  <div class="touch-hint" id="hint">SWIPE TO STEER · UP TO JUMP · DOWN TO DUCK</div>
+  <div class="controls"><button data-action="left">◀</button><button data-action="jump">⬆</button><button data-action="duck">⬇</button><button data-action="right">▶</button></div>
+ </section>
+ <section id="shop" class="screen">
+  <div class="subhead"><button class="back" data-back>‹</button><div><small>MAKE EVERY RUN COUNT</small><h2>UPGRADE SHOP</h2></div></div>
+  <div class="shop-wallet">💎 <b id="shop-wallet">0</b> diamonds available</div>
+  <div id="upgrades" class="upgrade-list"></div>
+  <p class="fine">Upgrades are permanent and saved on this device.</p>
+ </section>
+ <section id="how" class="screen">
+  <div class="subhead"><button class="back" data-back>‹</button><div><small>READY, SET, RIDE</small><h2>HOW TO PLAY</h2></div></div>
+  <div class="instructions"><p>↔️ <b>Steer:</b> swipe left/right or use the side buttons.</p><p>⬆️ <b>Jump:</b> swipe up to clear rocks and gaps.</p><p>⬇️ <b>Duck:</b> swipe down to pass under low barriers.</p><p>💎 <b>Collect:</b> diamonds appear in generous trails. Pick them up to spend in the shop.</p><p>⚡ <b>Survive:</b> the longer you ride, the faster the mountain gets.</p></div>
+ </section>
+ <section id="over" class="screen">
+  <div class="result-card"><div class="result-icon">🏔️</div><small>RUN COMPLETE</small><h2>WIPEOUT!</h2><div class="result-gems">💎 <strong id="earned">0</strong> collected</div><div class="result-stats"><div><small>DISTANCE</small><b id="final-distance">0 m</b></div><div><small>BEST</small><b id="final-best">0 m</b></div></div><button class="primary" id="again">↻ RIDE AGAIN</button><button class="secondary" id="to-home">MAIN MENU</button></div>
+ </section>
+ <div id="pause-layer" class="modal"><div class="modal-card"><h2>PAUSED</h2><p>Catch your breath. The mountain can wait.</p><button class="primary" id="resume">RESUME</button><button class="secondary" id="quit">END RUN</button></div></div>
+</main>
+<script src="game.js"></script>
+</body></html>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>
